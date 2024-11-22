@@ -7,7 +7,9 @@ body {
     min-height: 100vh;
     margin: 0;
   }
-  
+  .card-image {
+    min-height: 300px;
+}
   .card-container {
     display: flex;
     flex-wrap: wrap;

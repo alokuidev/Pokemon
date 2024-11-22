@@ -8,10 +8,13 @@ const Pokemoncard = ({res}) =>{
         <span>#{res.order}</span>
       </div>
       <div className="card-image">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pikachu"/>
+        <img src={res.sprites.other.dream_world.front_default} alt={res.name}/>
       </div>
       <div className="card-details">
-        <p><strong>Type:</strong> Electric</p>
+        <p><strong>Type:</strong> {res.types.map((Ptype) => Ptype.type.name).join(', ')
+                //index === res.types.length - 1 ? Ptype.type.name : Ptype.type.name+','
+             
+         }</p>
         <p><strong>HP:</strong> {res.stats[0].base_stat}</p>
       </div>
     </div>

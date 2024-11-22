@@ -6,8 +6,8 @@ import  Pokemoncard  from './Pokemoncard';
 const Pokemon = () =>{
 
     const [pokemon , setPokemon] = useState([])
-
-    const APIUrl = 'https://pokeapi.co/api/v2/pokemon?limit=30';
+    const [searchData, setSearchData] = useState('');
+    const APIUrl = 'https://pokeapi.co/api/v2/pokemon?limit=120';
 
     const fetchApi = async () =>{
         try{
@@ -20,7 +20,7 @@ const Pokemon = () =>{
             })
             //console.log(deatiledPokemonData)
             const deatiledPokemonResponse = await Promise.all(deatiledPokemonData)
-            console.log(deatiledPokemonResponse)
+            //console.log(deatiledPokemonResponse)
             setPokemon(deatiledPokemonResponse)
         }
         catch(error)
@@ -33,13 +33,16 @@ const Pokemon = () =>{
     useEffect(() =>{
         fetchApi(); 
     },[])
+
+    const filterData = pokemon.filter((currCard) => currCard.name.toLowerCase().includes(searchData.toLowerCase()));
+    
     return(
         <>
     <div className="header">
-        <input type="text" placeholder="Search Pokémon..." className="search-box"/>
+        <input type="text" placeholder="Search Pokémon..." value={searchData} onChange={(e)=> setSearchData(e.target.value)}  className="search-box"/>
     </div>
     <div className="card-container">
-    {pokemon.map((res) =>{
+    {filterData.map((res) =>{
         return(
 
     
