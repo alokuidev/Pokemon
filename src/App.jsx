@@ -1,8 +1,9 @@
-import Pokemon from "./Component/Pokemon"
+//import Pokemon from "./Component/Pokemon"
+import Pokemonpractice from "./Component/Pokemonpractice";
 
 const App = () => {
   return(
-    <Pokemon/>
+    <Pokemonpractice/>
   )
 }
 
